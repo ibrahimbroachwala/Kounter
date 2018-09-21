@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "328866494465",
+    "firebase_url": "https://kounter-4522b.firebaseio.com",
+    "project_id": "kounter-4522b",
+    "storage_bucket": "kounter-4522b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328866494465:android:7d3cbce2caf40868",
+        "android_client_info": {
+          "package_name": "kounter.apps.ib.kounter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328866494465-ijd6v9h0dfg28vdpd2gb03h4ii06fpde.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kounter.apps.ib.kounter",
+            "certificate_hash": "aaeed42f6eac472a4776d03db15f7d43bc9bedc0"
+          }
+        },
+        {
+          "client_id": "328866494465-8a6le0naqib2ns8hkvtik9os2uj122nu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkmR7XeeG8ys7b3dCJMs8sDQ5uYvbLcrE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328866494465-8a6le0naqib2ns8hkvtik9os2uj122nu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

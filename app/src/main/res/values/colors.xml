@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">#fafafa</color>
+    <color name="colorPrimaryDark">#424242</color>
+    <color name="colorAccent">#9e9e9e</color>
+
+    <color name="lightcolorPrimary">#424242</color>
+    <color name="lightcolorPrimaryDark">#fafafa</color>
+    <color name="colorAccent2">#616161</color>
+    <color name="lightcolorAccent">#9e9e9e</color>
+    <color name="backgroundTintLight">#fafafa</color>
+    <color name="textColorLight">#424242</color>
+
+
+    <color name="darkColorPrimary">#fafafa</color>
+    <color name="darkColorPrimaryDark">#424242</color>
+    <color name="darkColorAccent">#9e9e9e</color>
+    <color name="backgroundTintDark">#424242</color>
+    <color name="textColorDark">#fafafa</color>
+
+
+
+
+
+</resources>

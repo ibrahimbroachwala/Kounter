@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">काउंटर</string>
+    <string name="app_version">काउंटर v %1$s</string>
     <string name="bottom_sheet_header">सभी गिनती</string>
     <string name="newcount">नया</string>
     <string name="undo">पूर्ववत</string>

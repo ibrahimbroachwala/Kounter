@@ -39,12 +39,14 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/counts_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:nestedScrollingEnabled="true">
 
         </android.support.v7.widget.RecyclerView>
 
         <TextView
+            android:id="@+id/app_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/app_font"

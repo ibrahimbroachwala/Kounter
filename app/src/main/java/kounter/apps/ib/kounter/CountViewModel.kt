@@ -9,6 +9,7 @@ import android.view.View
 import kounter.apps.ib.kounter.db.Count
 import kounter.apps.ib.kounter.db.CountDao
 import kounter.apps.ib.kounter.db.CountDatabase
+import kounter.apps.ib.kounter.utils.PrefManager
 
 
 class CountViewModel(application: android.app.Application) : AndroidViewModel(application), LifecycleObserver {
@@ -19,6 +20,7 @@ class CountViewModel(application: android.app.Application) : AndroidViewModel(ap
     private var allCounts: LiveData<List<Count>>
 
     var db: CountDatabase = CountDatabase.getInstance(application)!!
+    var sharedPref: PrefManager
 
     private val COUNT_KEY = "count_key"
 
@@ -30,11 +32,16 @@ class CountViewModel(application: android.app.Application) : AndroidViewModel(ap
     //Initializer
     init {
         allCounts = db.countDao().getAllCounts()
+        sharedPref = PrefManager(application)
     }
 
 
 
     //Current Count Functions
+
+    fun setActiveCount(count: Int){
+        countChange.value = count
+    }
     fun increment() {
         count += incrementBy
         countChange.value = count }
@@ -96,7 +103,6 @@ class CountViewModel(application: android.app.Application) : AndroidViewModel(ap
 
     }
 
-
     private class deleteAsyncTask(val db: CountDatabase) : AsyncTask<Count, Void, Void>() {
 
         override fun doInBackground(vararg params: Count?): Void? {
@@ -115,13 +121,9 @@ class CountViewModel(application: android.app.Application) : AndroidViewModel(ap
 
     }
 
-
-
-
-
     //Lifecycle Observer
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun onResume() { countChange.value = count }
-
+    fun onResume() { countChange.value = sharedPref.getActiveCount()
+    count = sharedPref.getActiveCount()}
 
 }

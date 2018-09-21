@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.content_main.*
 import kounter.apps.ib.kounter.adapter.CountsAdapter
 import kounter.apps.ib.kounter.db.Count
 import android.os.Vibrator
+import android.support.annotation.IntegerRes
 import android.support.annotation.RequiresApi
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
@@ -26,6 +28,11 @@ import kounter.apps.ib.kounter.adapter.ItemClick
 import kounter.apps.ib.kounter.utils.Theme
 import kounter.apps.ib.kounter.utils.Themes
 import android.widget.TextView
+import kounter.apps.ib.kounter.utils.PrefManager
+import android.content.pm.PackageManager
+import android.R.attr.versionName
+import com.google.android.gms.common.util.ClientLibraryUtils.getPackageInfo
+import android.content.pm.PackageInfo
 
 
 
@@ -49,6 +56,8 @@ class MainActivity : AppCompatActivity(), ItemClick {
                 value?.let { loadCounts(value) }
             }
 
+    var prefs: PrefManager? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Theme.setTheme(this@MainActivity)
@@ -64,6 +73,7 @@ class MainActivity : AppCompatActivity(), ItemClick {
             themeHandler(Themes.LIGHT)
         }
 
+        prefs = PrefManager(this@MainActivity)
 
         val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
 
@@ -118,6 +128,16 @@ class MainActivity : AppCompatActivity(), ItemClick {
                 }
             }
         })
+
+
+        try {
+            val pInfo = this.packageManager.getPackageInfo(packageName, 0)
+            val version = pInfo.versionName
+            app_version.text = resources.getString(R.string.app_version,version)
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+        }
+
     }
 
 
@@ -242,12 +262,20 @@ class MainActivity : AppCompatActivity(), ItemClick {
     override fun onPause() {
         super.onPause()
         Log.d("lifecycle","onPause called")
+        val count = Count()
+        count.name = count_name.text.toString().trim()
+        count.count = Integer.valueOf(count_text.text.toString())
+
+        prefs!!.setActiveCount(count)
+
     }
 
 
     override fun onResume() {
         super.onResume()
 
+        if(prefs!=null)
+        viewModel.setActiveCount(prefs!!.getActiveCount())
         Log.d("lifecycle","onResume called")
     }
 

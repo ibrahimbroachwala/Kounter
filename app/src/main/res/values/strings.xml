@@ -10,6 +10,7 @@
     <string name="save">SAVE</string>
     <string name="undo">UNDO</string>
     <string name="newcount">NEW</string>
+    <string name="delete">DELETE</string>
 
     //Snackbar Messages
     <string name="m_saved">Count Saved</string>

@@ -17,12 +17,16 @@
             android:id="@+id/item_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
-            android:text="TextView"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/app_font"
+            android:text="TextView"
             android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_name" />
+            app:layout_constraintTop_toBottomOf="@+id/item_name"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/item_count_up"
@@ -64,12 +68,12 @@
             android:fontFamily="@font/app_font"
             android:inputType="number"
             android:padding="8dp"
-            android:text="9999"
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="9999" />
 
         <android.support.design.button.MaterialButton
             android:id="@+id/item_count_delete"
@@ -79,7 +83,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/app_font"
-            android:text="DELETE"
+            android:text="@string/delete"
             android:textColor="#ef5350"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/app_font"
-            android:text="SAVE"
+            android:text="@string/save"
             android:textColor="#66bb6a"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -100,13 +104,14 @@
 
         <EditText
             android:id="@+id/item_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:background="@null"
             android:fontFamily="@font/app_font"
+            android:maxLines="2"
             android:text="TextView"
             app:layout_constraintEnd_toStartOf="@+id/item_count_text"
             app:layout_constraintHorizontal_bias="0.0"

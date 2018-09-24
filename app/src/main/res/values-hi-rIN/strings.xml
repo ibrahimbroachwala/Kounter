@@ -6,9 +6,10 @@
     <string name="newcount">नया</string>
     <string name="undo">पूर्ववत</string>
     <string name="save">सेव</string>
+    <string name="delete">मिटाएँ</string>
     <string name="count_name_hint">आप क्या गिन रहे हैं?</string>
     <string name="bottom_sheet_header_no_count">सहेजी गई गिनती यहां दिखाई देगी</string>
-    <string name="m_delete">"काउंट दिलितेड "</string>
-    <string name="m_update">"काउंट अपदेतेड "</string>
-    <string name="m_saved">"काउंट सेव्ड "</string>
+    <string name="m_delete">"काउंट मिट गया"</string>
+    <string name="m_update">"काउंट अपदेतेड"</string>
+    <string name="m_saved">"काउंट सेव्ड"</string>
 </resources>

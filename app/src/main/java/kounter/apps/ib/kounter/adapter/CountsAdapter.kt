@@ -10,18 +10,16 @@ import kounter.apps.ib.kounter.utils.GetTime
 import kounter.apps.ib.kounter.R
 import kounter.apps.ib.kounter.db.Count
 
-class CountsAdapter(val context: Context, val searchResult: List<Count>,val listener: ItemClick) : RecyclerView.Adapter<CountViewHolder>() {
-
-    var itemSelectedArray = listOf<Boolean>()
+class CountsAdapter(val context: Context, val searchResult: List<Count>, val listener: ItemClick) : RecyclerView.Adapter<CountViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountViewHolder = CountViewHolder(parent.inflate(R.layout.item_count))
 
     override fun getItemCount(): Int = searchResult.size
 
-    override fun onBindViewHolder(holder: CountViewHolder, position: Int) = holder.bind(searchResult[position],listener)
+    override fun onBindViewHolder(holder: CountViewHolder, position: Int) = holder.bind(searchResult[position], listener)
 }
 
-interface ItemClick{
+interface ItemClick {
 
     fun updateCount(item: Count)
 
@@ -32,10 +30,12 @@ interface ItemClick{
 class CountViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
 
-
-    fun bind(item: Count,listener: ItemClick) = with(itemView) {
+    fun bind(item: Count, listener: ItemClick) = with(itemView) {
 
         var count = item.count
+
+        setItemSelected(item)
+
 
         item_count_text.setText(item.count.toString())
         item_name.setText(item.name)
@@ -47,8 +47,8 @@ class CountViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         }
 
         item_count_down.setOnClickListener {
-            if(count-1>-1)
-            item_count_text.setText((--count).toString())
+            if (count - 1 > -1)
+                item_count_text.setText((--count).toString())
 
         }
 
@@ -64,7 +64,6 @@ class CountViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
             listener.updateCount(item)
         }
 
-
         setOnClickListener {
             setItemSelected(item)
         }
@@ -72,8 +71,9 @@ class CountViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
     }
 
 
-    fun setItemSelected(item: Count) = with(itemView){
-        if(!item.selected) {
+    fun setItemSelected(item: Count) = with(itemView) {
+        if (!item.selected) {
+
             item.selected = true
             item_count_up.visibility = View.VISIBLE
             item_count_down.visibility = View.VISIBLE
@@ -81,14 +81,16 @@ class CountViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
             item_count_update.visibility = View.VISIBLE
             item_count_text.isEnabled = true
             item_name.isEnabled = true
-        }else{
+
+        } else {
+
             item.selected = false
             item_count_up.visibility = View.GONE
             item_count_down.visibility = View.GONE
             item_count_delete.visibility = View.GONE
             item_count_update.visibility = View.GONE
-            item_count_text.isEnabled = true
-            item_name.isEnabled = true
+            item_count_text.isEnabled = false
+            item_name.isEnabled = false
         }
     }
 

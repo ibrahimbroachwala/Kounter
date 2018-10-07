@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.item_count.view.*
 import kounter.apps.ib.kounter.utils.GetTime
 import kounter.apps.ib.kounter.R
 import kounter.apps.ib.kounter.db.Count
+import kounter.apps.ib.kounter.utils.Theme
+import kounter.apps.ib.kounter.utils.Theme.Companion.setTheme
+import kounter.apps.ib.kounter.utils.Themes
 
 class CountsAdapter(val context: Context, val searchResult: List<Count>, val listener: ItemClick) : RecyclerView.Adapter<CountViewHolder>() {
 
@@ -29,6 +32,21 @@ interface ItemClick {
 
 class CountViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
+    init {
+        setEditTextTheme()
+    }
+
+    private fun setEditTextTheme() = with(itemView) {
+
+        if(Theme.selectedTheme == Themes.DARK){
+            item_name.setTextColor(context.resources.getColor(R.color.edittext_selector_light))
+            item_count_text.setTextColor(context.resources.getColor(R.color.edittext_selector_light))
+        }else{
+            item_name.setTextColor(context.resources.getColor(R.color.edittext_selector_dark))
+            item_count_text.setTextColor(context.resources.getColor(R.color.edittext_selector_dark))
+        }
+
+    }
 
     fun bind(item: Count, listener: ItemClick) = with(itemView) {
 

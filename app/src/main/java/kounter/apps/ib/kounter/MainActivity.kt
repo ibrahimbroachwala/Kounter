@@ -33,8 +33,7 @@ import android.content.pm.PackageManager
 import android.R.attr.versionName
 import com.google.android.gms.common.util.ClientLibraryUtils.getPackageInfo
 import android.content.pm.PackageInfo
-
-
+import kotlinx.android.synthetic.main.item_count.*
 
 
 class MainActivity : AppCompatActivity(), ItemClick {
@@ -91,9 +90,13 @@ class MainActivity : AppCompatActivity(), ItemClick {
             viewModel.increment()
         }
 
-        reset_count.setOnClickListener { viewModel.resetCount() }
+        reset_count.setOnClickListener {
+            viewModel.resetCount()
+            count_name.setText("")
+        }
 
-        undo_count.setOnClickListener { viewModel.undoCount() }
+        undo_count.setOnClickListener {
+            viewModel.undoCount() }
 
         save_count.setOnClickListener { saveCount() }
 
@@ -213,6 +216,7 @@ class MainActivity : AppCompatActivity(), ItemClick {
                 reset_count.setTextColor(resources.getColor(R.color.colorPrimaryDark))
                 reset_count.iconTint = null
 
+
             }
             Themes.DARK -> {
 //                bottom_sheet.setBackgroundResource(R.drawable.bottom_sheet_bg_dark)
@@ -229,6 +233,7 @@ class MainActivity : AppCompatActivity(), ItemClick {
                 reset_count.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorPrimaryDark)
                 reset_count.setTextColor(getColorStateList(R.color.colorPrimary))
                 reset_count.iconTint = null
+
             }
         }
     }

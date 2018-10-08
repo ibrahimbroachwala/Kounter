@@ -16,6 +16,7 @@ class Theme {
         var selectedTheme= Themes.LIGHT
 
         fun selectTheme(activity: Activity,theme: Themes){
+
             when(theme){
                 Themes.LIGHT -> {
                     selectedTheme = theme
@@ -34,6 +35,10 @@ class Theme {
 
 
         fun setTheme(activity: Activity){
+
+            val prefs = PrefManager(activity)
+            selectedTheme = prefs.getActiveTheme()
+
             when(selectedTheme){
                 Themes.LIGHT -> {
                     activity.setTheme(R.style.AppThemeLight)

@@ -33,7 +33,10 @@ import android.content.pm.PackageManager
 import android.R.attr.versionName
 import com.google.android.gms.common.util.ClientLibraryUtils.getPackageInfo
 import android.content.pm.PackageInfo
+import android.graphics.Typeface
 import kotlinx.android.synthetic.main.item_count.*
+import kounter.apps.ib.kounter.utils.GetCountFont
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), ItemClick {
@@ -61,8 +64,12 @@ class MainActivity : AppCompatActivity(), ItemClick {
         super.onCreate(savedInstanceState)
         Theme.setTheme(this@MainActivity)
         setContentView(R.layout.activity_main)
+        GetCountFont.setFont(count_text,this@MainActivity)
+
 
         val vibe = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
+
 
         if (Theme.selectedTheme == Themes.DARK) {
             theme_button_dark.isChecked = true
@@ -72,18 +79,16 @@ class MainActivity : AppCompatActivity(), ItemClick {
             themeHandler(Themes.LIGHT)
         }
 
-        prefs = PrefManager(this@MainActivity)
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
+        prefs = PrefManager(this@MainActivity)
 
         lifecycle.addObserver(viewModel)
 
-        viewModel.restoreState(savedInstanceState)
+//        viewModel.restoreState(savedInstanceState)
 
         viewModel.countChange.observe(this, countObserver)
 
         viewModel.getAllCounts().observe(this, allCountsObserver)
-
 
         background.setOnClickListener {
             vibe.vibrate(20)
@@ -104,10 +109,12 @@ class MainActivity : AppCompatActivity(), ItemClick {
         theme_group.setOnCheckedChangeListener { _, i ->
             when (i) {
                 R.id.theme_button_dark -> {
+                    prefs!!.setActiveTheme(Themes.DARK)
                     Theme.selectTheme(this, Themes.DARK)
                 }
 
                 R.id.theme_button_light -> {
+                    prefs!!.setActiveTheme(Themes.LIGHT)
                     Theme.selectTheme(this, Themes.LIGHT)
                 }
             }
@@ -146,10 +153,10 @@ class MainActivity : AppCompatActivity(), ItemClick {
 
 
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        viewModel.saveState(outState)
-    }
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//        viewModel.saveState(outState)
+//    }
 
     private fun setCount(count: Int) {
         count_text.text = count.toString()
@@ -204,16 +211,16 @@ class MainActivity : AppCompatActivity(), ItemClick {
 //                bottom_sheet.setBackgroundResource(R.drawable.bottom_sheet_bg_light)
                 bottom_sheet_handle.setBackgroundResource(R.drawable.handle_bg_dark)
 
-                undo_count.backgroundTintList = getColorStateList(R.color.colorPrimary)
-                undo_count.setTextColor(resources.getColor(R.color.colorPrimaryDark))
-                undo_count.iconTint = getColorStateList(R.color.colorPrimaryDark)
+                undo_count.backgroundTintList = ContextCompat.getColorStateList(this,R.color.colorPrimary)
+                undo_count.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark))
+                undo_count.iconTint = ContextCompat.getColorStateList(this,R.color.colorPrimaryDark)
 
-                save_count.backgroundTintList = getColorStateList(R.color.colorPrimary)
-                save_count.setTextColor(resources.getColor(R.color.colorPrimaryDark))
-                save_count.iconTint = getColorStateList(R.color.colorPrimaryDark)
+                save_count.backgroundTintList = ContextCompat.getColorStateList(this,R.color.colorPrimary)
+                save_count.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark))
+                save_count.iconTint = ContextCompat.getColorStateList(this,R.color.colorPrimaryDark)
 
-                reset_count.backgroundTintList = getColorStateList(R.color.colorPrimary)
-                reset_count.setTextColor(resources.getColor(R.color.colorPrimaryDark))
+                reset_count.backgroundTintList = ContextCompat.getColorStateList(this,R.color.colorPrimary)
+                reset_count.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark))
                 reset_count.iconTint = null
 
 
@@ -223,15 +230,15 @@ class MainActivity : AppCompatActivity(), ItemClick {
                 bottom_sheet_handle.setBackgroundResource(R.drawable.handle_bg_light)
 
                 undo_count.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorPrimaryDark)
-                undo_count.setTextColor(getColorStateList(R.color.colorPrimary))
+                undo_count.setTextColor(ContextCompat.getColorStateList(this,R.color.colorPrimary))
                 undo_count.iconTint = ContextCompat.getColorStateList(this, R.color.colorPrimary)
 
                 save_count.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorPrimaryDark)
-                save_count.setTextColor(getColorStateList(R.color.colorPrimary))
+                save_count.setTextColor(ContextCompat.getColorStateList(this,R.color.colorPrimary))
                 save_count.iconTint = ContextCompat.getColorStateList(this, R.color.colorPrimary)
 
                 reset_count.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorPrimaryDark)
-                reset_count.setTextColor(getColorStateList(R.color.colorPrimary))
+                reset_count.setTextColor(ContextCompat.getColorStateList(this,R.color.colorPrimary))
                 reset_count.iconTint = null
 
             }
@@ -251,12 +258,12 @@ class MainActivity : AppCompatActivity(), ItemClick {
 
         if(Theme.selectedTheme == Themes.DARK) {
             snackbarView.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorPrimary)
-            textView.setTextColor(resources.getColor(R.color.colorPrimaryDark))
+            textView.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark))
 
         }
         else {
             snackbarView.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorPrimaryDark)
-            textView.setTextColor(resources.getColor(R.color.colorPrimary))
+            textView.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary))
 
         }
 

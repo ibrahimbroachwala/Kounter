@@ -14,7 +14,7 @@
         android:clickable="true"
         android:elevation="0dp"
         android:hapticFeedbackEnabled="true"
-        android:fontFamily="@font/product_sans_regular"
+        android:fontFamily="@font/app_font"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

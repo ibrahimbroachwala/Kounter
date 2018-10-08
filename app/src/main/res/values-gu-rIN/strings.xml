@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">કાઉન્ટર</string>
+    <string name="app_version">" કાઉન્ટર v %1$s"</string>
+    <string name="bottom_sheet_header">મારા બધા ગણતરીઓ</string>
+    <string name="newcount">નવું</string>
+    <string name="undo">" પૂર્વવત્ "</string>
+    <string name="save">સાચવો</string>
+    <string name="delete">" કાઢી નાખો"</string>
+    <string name="count_name_hint">તમે શું ગણતરી કરી રહ્યા છો?</string>
+    <string name="bottom_sheet_header_no_count">સાચવેલ ગણતરીઓ અહીં દેખાશે</string>
+    <string name="m_delete">ગણતરી કાઢી નાખી</string>
+    <string name="m_update">ગણતરી સુધારાઇ ગઈ</string>
+    <string name="m_saved">"ગણતરી સાચવેલ "</string>
+</resources>

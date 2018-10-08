@@ -22,7 +22,7 @@ class CountViewModel(application: android.app.Application) : AndroidViewModel(ap
     var db: CountDatabase = CountDatabase.getInstance(application)!!
     var sharedPref: PrefManager
 
-    private val COUNT_KEY = "count_key"
+//    private val COUNT_KEY = "count_key"
 
     var count: Int = 0
     var incrementBy: Int = 1
@@ -61,13 +61,13 @@ class CountViewModel(application: android.app.Application) : AndroidViewModel(ap
 
 
     //save and Restore Count
-    fun saveState(outState: Bundle) {
-        outState.putInt(COUNT_KEY, count)
-    }
-
-    fun restoreState(inState: Bundle?) {
-        inState?.let { count = inState.getInt(COUNT_KEY) }
-    }
+//    fun saveState(outState: Bundle) {
+//        outState.putInt(COUNT_KEY, count)
+//    }
+//
+//    fun restoreState(inState: Bundle?) {
+//        inState?.let { count = inState.getInt(COUNT_KEY) }
+//    }
 
 
 

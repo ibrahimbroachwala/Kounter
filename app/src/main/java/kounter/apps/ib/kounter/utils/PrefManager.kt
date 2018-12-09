@@ -2,7 +2,6 @@ package kounter.apps.ib.kounter.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import io.opencensus.stats.Aggregation
 import kounter.apps.ib.kounter.db.Count
 
 class PrefManager(context: Context) {

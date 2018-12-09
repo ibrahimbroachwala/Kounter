@@ -31,7 +31,7 @@ import android.widget.TextView
 import kounter.apps.ib.kounter.utils.PrefManager
 import android.content.pm.PackageManager
 import android.R.attr.versionName
-import com.google.android.gms.common.util.ClientLibraryUtils.getPackageInfo
+//import com.google.android.gms.common.util.ClientLibraryUtils.getPackageInfo
 import android.content.pm.PackageInfo
 import android.graphics.Typeface
 import kotlinx.android.synthetic.main.item_count.*

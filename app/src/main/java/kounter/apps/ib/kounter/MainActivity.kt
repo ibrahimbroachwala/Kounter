@@ -1,15 +1,15 @@
 package kounter.apps.ib.kounter
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
-import android.support.v7.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.TextUtils
 import android.view.View
 import kotlinx.android.synthetic.main.bottom_sheet_all_counts.*
@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.content_main.*
 import kounter.apps.ib.kounter.adapter.CountsAdapter
 import kounter.apps.ib.kounter.db.Count
 import android.os.Vibrator
-import android.support.annotation.IntegerRes
-import android.support.annotation.RequiresApi
-import android.support.design.widget.Snackbar
-import android.support.v4.content.ContextCompat
+import androidx.annotation.IntegerRes
+import androidx.annotation.RequiresApi
+import com.google.android.material.snackbar.Snackbar
+import androidx.core.content.ContextCompat
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,6 +34,7 @@ import android.R.attr.versionName
 //import com.google.android.gms.common.util.ClientLibraryUtils.getPackageInfo
 import android.content.pm.PackageInfo
 import android.graphics.Typeface
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_count.*
 import kounter.apps.ib.kounter.utils.GetCountFont
 import java.util.*
@@ -171,7 +172,7 @@ class MainActivity : AppCompatActivity(), ItemClick {
             bottom_sheet_header.text = resources.getString(R.string.bottom_sheet_header)
 
         //Set recyclerview adapter
-        counts_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        counts_rv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         counts_rv.adapter = CountsAdapter(this, listCounts, this)
 
 
@@ -253,8 +254,7 @@ class MainActivity : AppCompatActivity(), ItemClick {
         val snackbarView = mySnackbar.view
         snackbarView.elevation = 1000f
 
-        val snackbarTextId = android.support.design.R.id.snackbar_text
-        val textView = snackbarView.findViewById(snackbarTextId) as TextView
+        val textView = snackbarView.findViewById(R.id.snackbar_text) as TextView
 
         if(Theme.selectedTheme == Themes.DARK) {
             snackbarView.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorPrimary)

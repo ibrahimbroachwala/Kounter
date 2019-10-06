@@ -1,7 +1,7 @@
 package kounter.apps.ib.kounter.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import kounter.apps.ib.kounter.utils.Theme
 import kounter.apps.ib.kounter.utils.Theme.Companion.setTheme
 import kounter.apps.ib.kounter.utils.Themes
 
-class CountsAdapter(val context: Context, val searchResult: List<Count>, val listener: ItemClick) : RecyclerView.Adapter<CountViewHolder>() {
+class CountsAdapter(val context: Context, val searchResult: List<Count>, val listener: ItemClick) : androidx.recyclerview.widget.RecyclerView.Adapter<CountViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountViewHolder = CountViewHolder(parent.inflate(R.layout.item_count))
 
@@ -30,7 +30,7 @@ interface ItemClick {
 }
 
 
-class CountViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+class CountViewHolder(itemView: View?) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView!!) {
 
     init {
         setEditTextTheme()

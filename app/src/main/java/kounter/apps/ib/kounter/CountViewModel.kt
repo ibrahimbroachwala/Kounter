@@ -1,8 +1,9 @@
 package kounter.apps.ib.kounter
 
+import android.annotation.SuppressLint
 import android.app.Application
-import android.arch.lifecycle.*
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.View
@@ -12,7 +13,7 @@ import kounter.apps.ib.kounter.db.CountDatabase
 import kounter.apps.ib.kounter.utils.PrefManager
 
 
-class CountViewModel(application: android.app.Application) : AndroidViewModel(application), LifecycleObserver {
+class CountViewModel(application: Application) : AndroidViewModel(application), LifecycleObserver {
 
 
     //Declarations
@@ -34,7 +35,6 @@ class CountViewModel(application: android.app.Application) : AndroidViewModel(ap
         allCounts = db.countDao().getAllCounts()
         sharedPref = PrefManager(application)
     }
-
 
 
     //Current Count Functions
